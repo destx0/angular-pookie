@@ -17,7 +17,7 @@ export default async function ChatPage() {
         setInput={setInput}
         isAtBottom={isAtBottom}
         scrollToBottom={scrollToBottom}
-        session={session}
+        session={session} // Add this line
       />
     </div>
   )

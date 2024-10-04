@@ -12,7 +12,6 @@ import type { AI } from '@/lib/chat/actions'
 import { nanoid } from 'nanoid'
 import { UserMessage } from './stocks/message'
 import { Session } from '@/lib/types'
-import { AngularDocs } from './AngularDocs'
 
 export interface ChatPanelProps {
   id?: string
@@ -74,8 +73,10 @@ export function ChatPanel({
             <PromptForm input={input} setInput={setInput} />
           </div>
         ) : (
-          <div className="space-y-4 border-t bg-background px-4 py-2 shadow-lg sm:rounded-t-xl sm:border md:py-4 h-[calc(100vh-100px)] overflow-hidden">
-            <AngularDocs />
+          <div className="space-y-4 border-t bg-background px-4 py-2 shadow-lg sm:rounded-t-xl sm:border md:py-4">
+            <p className="text-center text-muted-foreground">
+              Please <a href="/login" className="text-primary hover:underline">log in</a> to chat.
+            </p>
           </div>
         )}
 
