@@ -30,8 +30,8 @@ export function Chat({ id, className, session, missingKeys }: ChatProps) {
 
   useEffect(() => {
     if (session?.user) {
-      if (!path.includes('chat') && messages.length === 1) {
-        window.history.replaceState({}, '', `/chat/${id}`)
+      if (!path.includes('cook') && messages.length === 1) {
+        window.history.replaceState({}, '', `/cook/${id}`)
       }
     }
   }, [id, path, session?.user, messages])

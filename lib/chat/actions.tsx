@@ -529,7 +529,7 @@ export const AI = createAI<AIState, UIState>({
 
     const createdAt = new Date()
     const userId = session.user.id as string
-    const path = `/chat/${chatId}`
+    const path = `/cook/${chatId}`
 
     const firstMessageContent = messages[0].content as string
     const title = firstMessageContent.substring(0, 100)
