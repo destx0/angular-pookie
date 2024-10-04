@@ -45,10 +45,10 @@ export function Chat({ id, className, session, missingKeys }: ChatProps) {
 
   useEffect(() => {
     setNewChatId(id)
-  })
+  }, [id, setNewChatId])
 
   useEffect(() => {
-    missingKeys.map(key => {
+    missingKeys.forEach(key => {
       toast.error(`Missing ${key} environment variable!`)
     })
   }, [missingKeys])
@@ -58,17 +58,17 @@ export function Chat({ id, className, session, missingKeys }: ChatProps) {
 
   return (
     <div
-      className="group w-full overflow-auto pl-0 peer-[[data-state=open]]:lg:pl-[250px] peer-[[data-state=open]]:xl:pl-[300px]"
+      className={cn(
+        "group w-full overflow-auto pl-0 peer-[[data-state=open]]:lg:pl-[250px] peer-[[data-state=open]]:xl:pl-[300px]",
+        className
+      )}
       ref={scrollRef}
     >
-      <div
-        className={cn('pb-[200px] pt-4 md:pt-10', className)}
-        ref={messagesRef}
-      >
+      <div className="pb-[200px] pt-4 md:pt-10" ref={messagesRef}>
         {messages.length ? (
           <ChatList messages={messages} isShared={false} session={session} />
         ) : (
-          <p></p>
+          <EmptyScreen setInput={setInput} />
         )}
         <div className="w-full h-px" ref={visibilityRef} />
       </div>
@@ -78,6 +78,7 @@ export function Chat({ id, className, session, missingKeys }: ChatProps) {
         setInput={setInput}
         isAtBottom={isAtBottom}
         scrollToBottom={scrollToBottom}
+        session={session}
       />
     </div>
   )
