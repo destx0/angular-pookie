@@ -12,6 +12,7 @@ import { useAIState, useActions, useUIState } from 'ai/rsc'
 import type { AI } from '@/lib/chat/actions'
 import { nanoid } from 'nanoid'
 import { UserMessage } from './stocks/message'
+import { Session } from '@/lib/types' // Correctly import the Session type
 
 export interface ChatPanelProps {
   id?: string
