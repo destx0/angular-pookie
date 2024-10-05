@@ -2,6 +2,7 @@ import { clearChats, getChats } from '@/app/actions'
 import { ClearHistory } from '@/components/clear-history'
 import { SidebarItems } from '@/components/sidebar-items'
 import { ThemeToggle } from '@/components/theme-toggle'
+import { ModelSwitch } from '@/components/model-switch'
 import { redirect } from 'next/navigation'
 import { cache } from 'react'
 
@@ -33,8 +34,11 @@ export async function SidebarList({ userId }: SidebarListProps) {
             </div>
           )}
         </div>
-        <div className="flex items-center justify-between p-4">
-          <ThemeToggle />
+        <div className="flex flex-col items-center justify-between p-4">
+          <div className="flex w-full items-center justify-between mb-4">
+            <ThemeToggle />
+            <ModelSwitch />
+          </div>
           <ClearHistory clearChats={clearChats} isEnabled={chats?.length > 0} />
         </div>
       </div>

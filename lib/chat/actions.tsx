@@ -111,6 +111,9 @@ async function submitUserMessage(content: string) {
 
   const aiState = getMutableAIState<typeof AI>()
 
+  // Add this line to get the selected model from localStorage
+  const selectedModel = typeof window !== 'undefined' ? localStorage.getItem('aiModel') || 'gpt-4o-mini' : 'gpt-4o-mini'
+
   aiState.update({
     ...aiState.get(),
     messages: [
@@ -127,7 +130,7 @@ async function submitUserMessage(content: string) {
   let textNode: undefined | React.ReactNode
 
   const result = await streamUI({
-    model: openai('gpt-4o-mini'),
+    model: openai(selectedModel), // Use the selected model here
     initial: <SpinnerMessage />,
     system: `\
     You are a helpful assistant`,
